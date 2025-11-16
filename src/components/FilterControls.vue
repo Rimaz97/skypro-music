@@ -1,21 +1,21 @@
 <template>
   <div class="centerblock__filter filter">
     <div class="filter__title">Искать по:</div>
-    <div 
-      class="filter__button button-author _btn-text" 
+    <div
+      class="filter__button button-author _btn-text"
       :class="{ active: activeFilter === 'author' }"
       @click="setFilter('author')"
     >
       исполнителю
     </div>
-    <div 
+    <div
       class="filter__button button-year _btn-text"
-      :class="{ active: activeFilter === 'year' }" 
+      :class="{ active: activeFilter === 'year' }"
       @click="setFilter('year')"
     >
       году выпуска
     </div>
-    <div 
+    <div
       class="filter__button button-genre _btn-text"
       :class="{ active: activeFilter === 'genre' }"
       @click="setFilter('genre')"
@@ -26,20 +26,20 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 
-const activeFilter = ref('')
-const emit = defineEmits(['filter'])
+const activeFilter = ref("");
+const emit = defineEmits(["filter"]);
 
 const setFilter = (filterType) => {
   if (activeFilter.value === filterType) {
-    activeFilter.value = ''
-    emit('filter', '')
+    activeFilter.value = "";
+    emit("filter", "");
   } else {
-    activeFilter.value = filterType
-    emit('filter', filterType)
+    activeFilter.value = filterType;
+    emit("filter", filterType);
   }
-}
+};
 </script>
 
 <style scoped>

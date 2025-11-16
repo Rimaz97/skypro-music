@@ -3,18 +3,30 @@
     <div class="nav__logo logo">
       <img class="logo__image" src="/img/logo.png" alt="Logo" />
     </div>
-    <div class="nav__burger burger" :class="{ 'burger--active': isMenuOpen }" @click="toggleMenu">
+    <div
+      class="nav__burger burger"
+      :class="{ 'burger--active': isMenuOpen }"
+      @click="toggleMenu"
+    >
       <span class="burger__line"></span>
       <span class="burger__line"></span>
       <span class="burger__line"></span>
     </div>
-    <div class="nav__menu menu" :class="{ 'menu--active': isMenuOpen }" @click="closeMenu">
+    <div
+      class="nav__menu menu"
+      :class="{ 'menu--active': isMenuOpen }"
+      @click="closeMenu"
+    >
       <ul class="menu__list" @click.stop>
         <li class="menu__item">
-          <router-link to="/" class="menu__link" @click="closeMenu">Главное</router-link>
+          <router-link to="/" class="menu__link" @click="closeMenu"
+            >Главное</router-link
+          >
         </li>
         <li class="menu__item">
-          <router-link to="/favorites" class="menu__link" @click="closeMenu">Мой плейлист</router-link>
+          <router-link to="/favorites" class="menu__link" @click="closeMenu"
+            >Мой плейлист</router-link
+          >
         </li>
         <li class="menu__item">
           <a href="#" class="menu__link" @click.prevent="logout">Выйти</a>
@@ -25,42 +37,42 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { useAuthStore } from '@/stores/auth'
-import { useRouter } from 'vue-router'
+import { ref, onMounted, onUnmounted } from "vue";
+import { useAuthStore } from "@/stores/auth";
+import { useRouter } from "vue-router";
 
-const authStore = useAuthStore()
-const router = useRouter()
-const isMenuOpen = ref(false)
+const authStore = useAuthStore();
+const router = useRouter();
+const isMenuOpen = ref(false);
 
 const toggleMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
-}
+  isMenuOpen.value = !isMenuOpen.value;
+};
 
 const closeMenu = () => {
-  isMenuOpen.value = false
-}
+  isMenuOpen.value = false;
+};
 
 const logout = () => {
-  authStore.logout()
-  router.push('/login')
-  closeMenu()
-}
+  authStore.logout();
+  router.push("/login");
+  closeMenu();
+};
 
 // Закрытие меню при клике вне его области
 const handleClickOutside = (event) => {
-  if (!event.target.closest('.nav')) {
-    closeMenu()
+  if (!event.target.closest(".nav")) {
+    closeMenu();
   }
-}
+};
 
 onMounted(() => {
-  document.addEventListener('click', handleClickOutside)
-})
+  document.addEventListener("click", handleClickOutside);
+});
 
 onUnmounted(() => {
-  document.removeEventListener('click', handleClickOutside)
-})
+  document.removeEventListener("click", handleClickOutside);
+});
 </script>
 
 <style scoped>
@@ -180,7 +192,7 @@ onUnmounted(() => {
     margin: 0 15px;
     border-radius: 8px;
   }
-  
+
   .logo__image {
     width: 100px;
   }
@@ -191,11 +203,11 @@ onUnmounted(() => {
     top: 60px;
     margin: 0 10px;
   }
-  
+
   .logo__image {
     width: 90px;
   }
-  
+
   .menu__link {
     font-size: 14px;
     padding: 10px 15px;

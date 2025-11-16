@@ -42,30 +42,30 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useAuthStore } from '@/stores/auth'
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
 
-const router = useRouter()
-const authStore = useAuthStore()
+const router = useRouter();
+const authStore = useAuthStore();
 
-const email = ref('')
-const password = ref('')
-const confirmPassword = ref('')
+const email = ref("");
+const password = ref("");
+const confirmPassword = ref("");
 
 const handleRegister = () => {
   if (password.value !== confirmPassword.value) {
-    alert('Пароли не совпадают')
-    return
+    alert("Пароли не совпадают");
+    return;
   }
   authStore.register(
-    { email: email.value, name: 'Sergey.Ivanov' },
-    'demo-token'
-  )
-  router.push('/')
-}
+    { email: email.value, name: "Sergey.Ivanov" },
+    "demo-token"
+  );
+  router.push("/");
+};
 </script>
 
 <style scoped>
-@import '@/assets/css/auth.css';
+@import "@/assets/css/auth.css";
 </style>

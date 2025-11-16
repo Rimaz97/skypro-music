@@ -10,18 +10,18 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
+import { defineProps, defineEmits } from "vue";
 
 const props = defineProps({
   playlist: {
     type: Object,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-const emit = defineEmits(['select'])
+const emit = defineEmits(["select"]);
 
 const selectPlaylist = () => {
-  emit('select', props.playlist)
-}
+  emit("select", props.playlist);
+};
 </script>

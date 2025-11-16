@@ -23,23 +23,23 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmits } from 'vue'
-import TrackItem from './TrackItem.vue'
+import { defineProps, defineEmits } from "vue";
+import TrackItem from "./TrackItem.vue";
 
 const props = defineProps({
   tracks: {
     type: Array,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-const emit = defineEmits(['play', 'toggle-favorite'])
+const emit = defineEmits(["play", "toggle-favorite"]);
 
 const playTrack = (track) => {
-  emit('play', track)
-}
+  emit("play", track);
+};
 
 const toggleFavorite = (track) => {
-  emit('toggle-favorite', track)
-}
+  emit("toggle-favorite", track);
+};
 </script>
