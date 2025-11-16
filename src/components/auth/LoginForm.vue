@@ -24,9 +24,7 @@
             required
             autocomplete="current-password"
           />
-          <button class="modal__btn-enter" type="submit">
-            Войти
-          </button>
+          <button class="modal__btn-enter" type="submit">Войти</button>
           <button class="modal__btn-signup" type="button" @click="goToRegister">
             Зарегистрироваться
           </button>
@@ -37,29 +35,26 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useAuthStore } from '@/stores/auth'
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
 
-const router = useRouter()
-const authStore = useAuthStore()
+const router = useRouter();
+const authStore = useAuthStore();
 
-const email = ref('')
-const password = ref('')
+const email = ref("");
+const password = ref("");
 
 const handleLogin = () => {
-  authStore.login(
-    { email: email.value, name: 'Sergey.Ivanov' },
-    'demo-token'
-  )
-  router.push('/')
-}
+  authStore.login({ email: email.value, name: "Sergey.Ivanov" }, "demo-token");
+  router.push("/");
+};
 
 const goToRegister = () => {
-  router.push('/register')
-}
+  router.push("/register");
+};
 </script>
 
 <style scoped>
-@import '@/assets/css/auth.css';
+@import "@/assets/css/auth.css";
 </style>

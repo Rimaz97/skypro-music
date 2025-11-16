@@ -9,7 +9,8 @@
         </div>
         <div class="track__title-text">
           <a class="track__title-link" href="#">
-            {{ track.title }} <span class="track__title-span">{{ track.remix }}</span>
+            {{ track.title }}
+            <span class="track__title-span">{{ track.remix }}</span>
           </a>
         </div>
       </div>
@@ -20,8 +21,8 @@
         <a class="track__album-link" href="#">{{ track.album }}</a>
       </div>
       <div class="track__time">
-        <svg 
-          class="track__time-svg" 
+        <svg
+          class="track__time-svg"
           :class="{ active: isFavorite }"
           @click="$emit('toggle-favorite', track)"
         >
@@ -34,21 +35,21 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { defineProps, defineEmits } from 'vue'
-import { useFavoritesStore } from '@/stores/favorites'
+import { computed } from "vue";
+import { defineProps, defineEmits } from "vue";
+import { useFavoritesStore } from "@/stores/favorites";
 
 const props = defineProps({
   track: {
     type: Object,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-defineEmits(['play', 'toggle-favorite'])
+defineEmits(["play", "toggle-favorite"]);
 
-const favoritesStore = useFavoritesStore()
-const isFavorite = computed(() => 
-  favoritesStore.isFavorite(props.track.id).value
-)
+const favoritesStore = useFavoritesStore();
+const isFavorite = computed(
+  () => favoritesStore.isFavorite(props.track.id).value
+);
 </script>
